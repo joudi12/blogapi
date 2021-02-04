@@ -1,17 +1,70 @@
 import React from 'react';
+// import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import * as serviceWorker from './serviceWorker';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import Youtube from './Youtubek';
+import Videoid from './Videoid';
+import Header from './components/header';
+import Footer from './components/footer';
+import Register from './components/register';
+import Login from './components/login';
+import Logout from './components/logout';
+import Game from './components/Game/index';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import  Stories  from './components/stories';
+import Joudi from './components/story';
+import Aboutus from './components/aboutus';
+import "./App.css";
+import Mais from './components/guessingGame';
+
+
+import Home from './components/home';
+import HomeAfter from './components/homeAfter';
+import AllGames from './components/allgames';
+import Piano from './Piano'
+
+// 
+
+const routing = (
+    <Router>
+        <React.StrictMode>
+            <Switch>
+           
+                <Route exact path="/" component={Home} />
+                <Route exact path="/home" component={HomeAfter} />
+
+                {/* <Route exact path="/songs" component={App} /> */}
+                <Route path="/aboutus" component={Aboutus} />
+
+                <Route exact path="/songs" component={Youtube} />
+                <Route  path="/songs/:id" component={Videoid} />
+
+               
+
+
+                <Route path="/gamexo" component={Game} />
+                <Route className="app-container" path="/piano" component={Piano} />
+                <Route path="/games" component={AllGames} />
+                <Route path="/register" component={Register} />
+                <Route path="/guessing/:id" component={Mais} />
+                <Route path="/login" component={Login} />
+                <Route path="/logout" component={Logout} />
+                <Route  path="/stories" component={Stories}/>    
+                <Route path="/:id" component={Joudi}/> 
+
+                    
+            </Switch>
+            
+            
+        </React.StrictMode>
+    </Router>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(routing, document.getElementById('root'));
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
+
+
